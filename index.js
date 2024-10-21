@@ -15,7 +15,7 @@ function paginaIncial(requisicao, resposta){
 }
 
 
-app.get("/tabuada",tabuada);
+app.get("/Tabuada",tabuada);
 
 function tabuada(requisicao, resposta){
     const tabuada = parseInt(requisicao.query.tabuada);
