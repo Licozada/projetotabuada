@@ -10,6 +10,7 @@ function tabuada(requisicao, resposta) {
     const tabuada = parseInt(requisicao.query.tabuada);
     const sequencia = parseInt(requisicao.query.sequencia) || 10; // Define 10 se não for passado nenhum valor
 
+    resposta.setHeader('Content-Type', 'text/html');
     resposta.write(`<h1>Tabuada do ${tabuada}</h1>`);
     resposta.write("<ul>");
 
