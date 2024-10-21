@@ -12,6 +12,35 @@ function paginaIncial(requisicao, resposta){
         `);
 }
 
+function tabuada(requisicao, resposta){
+    const tabuada = parseInt(requisicao.query.tabuada);
+    const sequencia = parseInt(requisicao.query.sequencia);
+
+    if (isNaN(tabuada) || isNaN(sequencia)) {
+        resposta.write('<h1>Erro: Insira valores numéricos válidos para "tabuada" e "sequencia".</h1>');
+        resposta.end();
+        return;
+    }
+
+    resposta.write(`<h1>Tabuada do ${tabuada}</h1>`);
+    resposta.write("<ul>");
+
+    for (let i = 0; i <= sequencia; i++) {
+        resposta.write(`<li>${tabuada} x ${i} = ${tabuada * i}</li>`);
+    }
+
+    resposta.write("</ul>");
+    resposta.end();
+}
+
+
+
+
+
+
+
+app.get("/tabuada",tabuada);
+
 
 app.get("/", paginaIncial);
 
