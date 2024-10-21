@@ -4,6 +4,8 @@ const host  = "0.0.0.0";
 const porta = 3000;
 const app = express(); // todas as interfaces de rede do computador 
 
+app.get("/", paginaIncial);
+
 function paginaIncial(requisicao, resposta){
     resposta.send(`<h1> Seja Bem Vindo digite a tabuada que deseja procurar </h1>
                     <h2> Exemplo http://localhost/?tabuada=3&sequencia=25;</h2>
@@ -11,6 +13,9 @@ function paginaIncial(requisicao, resposta){
 
         `);
 }
+
+
+app.get("/tabuada",tabuada);
 
 function tabuada(requisicao, resposta){
     const tabuada = parseInt(requisicao.query.tabuada);
@@ -39,10 +44,9 @@ function tabuada(requisicao, resposta){
 
 
 
-app.get("/tabuada",tabuada);
 
 
-app.get("/", paginaIncial);
+
 
 app.listen(porta, host, () =>{
     console.log("Servidor em execução http://" + host + ":" + porta);
